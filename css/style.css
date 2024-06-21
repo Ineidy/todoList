@@ -1,0 +1,19 @@
+@font-face {
+    font-family: "titulo";
+    src: url(../storage/font/Lato-Regular.ttf);
+}
+
+body{
+background: linear-gradient(to right, #5a6369, #1f3244) ;
+}
+article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+h1{
+    color: white;
+    font-size: 120px;
+    font-family:"titulo", sans-serif;
+}
