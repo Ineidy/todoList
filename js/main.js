@@ -20,10 +20,10 @@ document.addEventListener ('DOMContentLoaded', () => {
             </div>
             <div class="botonesnegativo">
                 <div class="terminadonegativo">
-                    <img src="storage/img/pngwing.com (2).png" >
+                    <img src="storage/img/pngwing.com (2).png" data-id="${cap.id}" class="completado" >
                 </div>
                 <div class="eliminadonegativo">
-                    <img src="storage/img/pngwing.com (4).png" >
+                    <img src="storage/img/pngwing.com (4).png" data-id="${cap.id}" class="eliminado" >
                 </div>
             </div>
         </div>
@@ -38,10 +38,10 @@ document.addEventListener ('DOMContentLoaded', () => {
                 </div>
                 <div class="botones">
                     <div class="terminado">
-                        <img src="storage/img/pngwing.com (2).png" >
+                        <img src="storage/img/pngwing.com (2).png" data-id="${cap.id}" class="completado" >
                     </div>
                     <div class="eliminado">
-                        <img src="storage/img/pngwing.com (4).png" >
+                        <img src="storage/img/pngwing.com (4).png" data-id="${cap.id}" class="eliminado" >
                     </div>
                 </div>
             </div>
@@ -51,6 +51,35 @@ document.addEventListener ('DOMContentLoaded', () => {
             }
             datosContenedor.appendChild(capDiv)
         });
+        document.querySelectorAll('.completado').forEach(button =>{
+            button.addEventListener('click', botoncompletado);
+        });
+        document.querySelectorAll('.eliminado').forEach(button =>{
+            button.addEventListener('click', botoneliminado)
+        });
+
     }
-    fetchData().then(data => displayCapsula(data));
+    async function botoneliminado(event){
+        const id= event.target.getAttribute('data-id');
+        await fetch(`https://6674179975872d0e0a950e53.mockapi.io/todoList/${id}`,{
+            method: 'DELETE'
+        });
+        const data = await fetchData();
+        displayCapsula(data);
+    }
+    async function botoncompletado(event){
+        const id= event.target.getAttribute('data-id');
+        await fetch(`https://6674179975872d0e0a950e53.mockapi.io/todoList/${id}`,{
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ status: 'ready'})
+        });
+        const data = await fetchData();
+        displayCapsula(data);
+    }
+    fetchData().then(data=>{
+        displayCapsula(data);
+    })
 })
