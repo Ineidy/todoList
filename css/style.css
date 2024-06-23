@@ -29,6 +29,7 @@ h1{
 input{
     position: relative;
     font-size: 20px;
+    color: white;
     border-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.664);
     border-top-left-radius: 20px;
@@ -121,4 +122,13 @@ button{
     text-decoration:line-through;
     margin-top: 9px;
     font-size: 30px;
+}
+.datostiempohora{
+    color: white ;
+    margin-left: 100px;
+    /* background-color: aqua; */
+    font-family:"titulo", sans-serif;
+    padding-top: 40px;
+    font-size: 20px;
+    display: flex;
 }
