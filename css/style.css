@@ -19,7 +19,7 @@ background: linear-gradient(to right, #5c6368, #192938) ;
     width: 100%;
 }
 h1{
-    margin-left: 100px;
+
     margin-top: 130px;
     margin-bottom: 50px;
     color: white;
@@ -51,27 +51,27 @@ button{
     padding-left: 15px;
 }
 .terminado img{
+    margin-left: 20px;
+    margin-right: 10px;
     width: 50px;
     background-color: white;
     border-radius: 100%;
-    margin-right: 8px;
 }
 .eliminado img{
     width: 50px;
     background-color: white;
     border-radius: 100%;
 }
-.capsula{
+.capsula{ 
     padding-top: 3px;
-    margin-bottom: 20px;
     padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
     display: flex;
     color: white;
-    background-color: rgba(0, 0, 0, 0.664);
-    width: 450px;
-    flex-direction: row;
-    justify-content: space-around;
+    background-color: #14191d;
     border-radius: 30px;
+    max-width: 80%;
 }
 
 .botones{
@@ -79,11 +79,12 @@ button{
 
 }
 .infotext p{
-    margin-top: 9px;
+    margin-top: 10px;
     font-size: 30px;
 }
 .opciones{
-    margin-top: 60px;
+    gap: 20px;
+    margin-top: 70px;
     overflow-y: scroll;
     height: calc(84vh - 300px);
     display: flex;
@@ -93,21 +94,20 @@ button{
 .capsulanegativa{
     padding-top: 3px;
     padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
     display: flex;
-    color: rgba(255, 255, 255, 0.445);
-    background-color: rgba(0, 0, 0, 0.322);
-    margin-bottom: 20px;
-    padding-bottom: px;
-    width: 450px;
-    flex-direction: row;
-    justify-content: space-around;
+    color: rgba(255, 255, 255, 0.377);
+    background-color: #14191d;
     border-radius: 30px;
+    max-width: 80%;
 }
 .terminadonegativo img{
     width: 50px;
     background-color: rgba(255, 255, 255, 0.336);
     border-radius: 100%;
     margin-right: 8px;
+    margin-left: 20px;
 }
 .eliminadonegativo img{
     width: 50px;
@@ -116,16 +116,15 @@ button{
 }
 .botonesnegativo{
     display: flex;
-    
+
 }
 .infotextnegativo p{
-    text-decoration:line-through;
-    margin-top: 9px;
+    margin-top: 10px;
     font-size: 30px;
+    text-decoration:line-through;
 }
 .datostiempohora{
     color: white ;
-    margin-left: 100px;
     /* background-color: aqua; */
     font-family:"titulo", sans-serif;
     padding-top: 40px;

@@ -1,10 +1,10 @@
 document.addEventListener ('DOMContentLoaded', () => {
     const datosContenedor = document.querySelector('.opciones');
-    const taskInput = document.querySelector('.taskInput');
-    const addTaskButton = document.querySelector('.addTaskButton');
+    const taskInput = document.getElementById('taskInput');
+    const addTaskButton = document.getElementById('addTaskButton');
 
     async function fetchData() {
-        const res = await fetch('https://6674179975872d0e0a950e53.mockapi.io/todoList');
+        const res = await fetch('https://667846bd0bd45250561e1d21.mockapi.io/task');
         data = await res.json();
         return data;
     }
@@ -63,7 +63,7 @@ document.addEventListener ('DOMContentLoaded', () => {
     }
     async function botoneliminado(event){
         const id= event.target.getAttribute('data-id');
-        await fetch(`https://6674179975872d0e0a950e53.mockapi.io/todoList/${id}`,{
+        await fetch(`https://667846bd0bd45250561e1d21.mockapi.io/task/${id}`,{
             method: 'DELETE'
         });
         const data = await fetchData();
@@ -71,7 +71,7 @@ document.addEventListener ('DOMContentLoaded', () => {
     }
     async function botoncompletado(event){
         const id= event.target.getAttribute('data-id');
-        await fetch(`https://6674179975872d0e0a950e53.mockapi.io/todoList/${id}`,{
+        await fetch(`https://667846bd0bd45250561e1d21.mockapi.io/task/${id}`,{
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ document.addEventListener ('DOMContentLoaded', () => {
         const task = taskInput.value;
         if (task.trim() === '') return;
         
-        await fetch('https://6674179975872d0e0a950e53.mockapi.io/todoList', {
+        await fetch('https://667846bd0bd45250561e1d21.mockapi.io/task', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -100,9 +100,8 @@ document.addEventListener ('DOMContentLoaded', () => {
         const data = await fetchData();
         displayCapsula(data);
     }
-
+    taskInput.addEventListener('change', addNewTask);
     addTaskButton.addEventListener('click', addNewTask);
-
     fetchData().then(data => {
         displayCapsula(data);
     });
