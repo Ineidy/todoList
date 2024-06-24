@@ -1,5 +1,7 @@
 document.addEventListener ('DOMContentLoaded', () => {
     const datosContenedor = document.querySelector('.opciones');
+    const taskInput = document.querySelector('.taskInput');
+    const addTaskButton = document.querySelector('.addTaskButton');
 
     async function fetchData() {
         const res = await fetch('https://6674179975872d0e0a950e53.mockapi.io/todoList');
@@ -82,4 +84,26 @@ document.addEventListener ('DOMContentLoaded', () => {
     fetchData().then(data=>{
         displayCapsula(data);
     })
-})
+    async function addNewTask() {
+        const task = taskInput.value;
+        if (task.trim() === '') return;
+        
+        await fetch('https://6674179975872d0e0a950e53.mockapi.io/todoList', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ task, status: 'On hold' })
+        });
+
+        taskInput.value = ''; 
+        const data = await fetchData();
+        displayCapsula(data);
+    }
+
+    addTaskButton.addEventListener('click', addNewTask);
+
+    fetchData().then(data => {
+        displayCapsula(data);
+    });
+});
